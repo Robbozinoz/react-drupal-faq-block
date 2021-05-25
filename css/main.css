@@ -1,0 +1,12 @@
+/* File to add or complile CSS to */
+.faq-answer {
+    font-size: 1rem;
+}
+
+.faq-results .accordion .card {
+    border: none !important;
+}
+
+.faq-results .accordion .card .card-header {
+    background-color: transparent !important;
+}

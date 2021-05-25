@@ -1,0 +1,8 @@
+faq-search-bar:
+  css:
+    component:
+      css/main.css: {}
+  js:
+    js/dist/main.min.js: {minified: true}
+  dependencies:
+    - core/jquery

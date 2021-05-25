@@ -1,0 +1,5 @@
+name: 'React Content Search for FAQs'
+type: module
+description: 'Bootstrap Block for Drupal 8+ for an FAQ content type'
+core: 8.x
+package: 'FAQ Search bar'
