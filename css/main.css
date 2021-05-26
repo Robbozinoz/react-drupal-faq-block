@@ -10,3 +10,7 @@
 .faq-results .accordion .card .card-header {
     background-color: transparent !important;
 }
+
+.faq-search-form .form-control:focus {
+    box-shadow: none;
+}

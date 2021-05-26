@@ -11,11 +11,11 @@ const FaqItem = ({drupal_internal__nid, title, field_answer}) => (
     </div>
     <div id={`collapse${drupal_internal__nid}`} class="collapse" aria-labelledby={`heading${drupal_internal__nid}`} data-parent="#accordionBlock">
         <div class="card-body">   
-          <div class="faq-answer">{field_answer}</div>
+          <div class="faq-answer" dangerouslySetInnerHTML={{__html: field_answer.processed}}></div>
       </div>
     </div>
   </div>
-);
+)
 
 const NoData = () => (
   <div class="alert alert-warning" role="alert">No FAQs found.</div>
@@ -42,7 +42,7 @@ const FaqList = () => {
   //API Call with sparse fieldsets
   useEffect(() => {
     const API_ROOT = '/jsonapi/';
-    const url = `${API_ROOT}node/faq?fields[node--faq]=id,drupal_internal__nid,title,field_answer&sort=created&page[limit]=20`;
+    const url = `${API_ROOT}node/faq?fields[node--faq]=id,drupal_internal__nid,title,field_answer&sort=created`;
 
     const headers = new Headers({
       Accept: 'application/vnd.api+json',
@@ -82,7 +82,7 @@ const FaqList = () => {
                   return item;
                 }
 
-                if (filter && (item.attributes.title.toLowerCase().includes(filter))) {
+                if (filter && (item.attributes.title.toLowerCase().includes(filter) || item.attributes.field_answer.processed.toLowerCase().includes(filter))) {
                   return item;
                 }
               }).map((item) => <FaqItem key={item.id} {...item.attributes}/>)
